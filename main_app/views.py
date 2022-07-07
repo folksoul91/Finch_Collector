@@ -1,6 +1,6 @@
 from .models import Finch
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Add the following import
 # from django.http import HttpResponse
 
@@ -22,4 +22,12 @@ def finches_detail(request, finch_id):
 class FinchCreate(CreateView):
   model = Finch
   fields = '__all__'
+  success_url = '/finches/'
+
+class FinchUpdate(UpdateView):
+  model = Finch
+  fields = ['breed', 'description', 'age']
+
+class FinchDelete(DeleteView):
+  model = Finch
   success_url = '/finches/'
