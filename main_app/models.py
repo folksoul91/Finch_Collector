@@ -31,6 +31,9 @@ class Finch(models.Model):
   
   def get_absolute_url(self):
     return reverse('detail', kwargs ={'finch_id':self.id})
+ 
+  def fed_for_today(self):
+    return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
 
 # Add new Feeding model below Cat model
 class Feeding(models.Model):
@@ -45,3 +48,6 @@ class Feeding(models.Model):
   
   def __str__(self):
     return f"{self.get_meal_display()} on {self.date}"
+  
+  class Meta:
+    ordering = ['-date']

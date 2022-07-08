@@ -11,6 +11,8 @@ urlpatterns = [
  path('finches/<int:pk>/update/', views.FinchUpdate.as_view(), name='finches_update'),
  path('finches/<int:pk>/delete/', views.FinchDelete.as_view(), name='finches_delete'),
  
+ path('finches/<int:finch_id>/add_feeding/', views.add_feeding, name='add_feeding'),
+
  path('cats/<int:cat_id>/assoc_toy/<int:toy_id>/', views.assoc_toy, name='assoc_toy'),
  path('cats/<int:cat_id>/assoc_toy/<int:toy_id>/delete/', views.assoc_toy_delete, name='assoc_toy_delete'),
  path('toys/', views.ToyList.as_view(), name='toys_index'),
